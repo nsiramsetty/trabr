@@ -33,6 +33,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'vue-mapbox': path.resolve(__dirname, '../node_modules/vue-mapbox/dist/vue-mapbox.umd.min.js'),
     }
   },
   module: {

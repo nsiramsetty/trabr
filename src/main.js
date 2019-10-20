@@ -27,6 +27,13 @@ loadProgressBar(LOADER_CONFIG);
 
 Vue.config.productionTip = false
 
+import App from './_view/App';
+
+import VueMapbox from "vue-mapbox";
+import Mapbox from "mapbox-gl";
+
+Vue.use(VueMapbox, { mapboxgl: Mapbox });
+
 // Mount Vue JS APP into #app <div>
 
 new Vue({

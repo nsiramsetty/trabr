@@ -1,71 +1,61 @@
-<section class="home"
+<section class="home" style="height : 600px"
          xmlns:v-b-tooltip="http://www.w3.org/1999/xhtml"
          xmlns:v-bind="http://www.w3.org/1999/xhtml"
          xmlns:v-on="http://www.w3.org/1999/xhtml">
   <div class="row">
-    <div class="col-12">
-      <vue-form :state="signUpMobileFormState" @submit.prevent="submitSignUpMobileForm()">
-        <div class="row mb-2">
-          <div class="col-4 text-left">
-            <img src="/static/images/trabr.png" alt="Logo" class="logo-img">
-          </div>
-          <div class="col-8 text-left">
-            <h3>Sign up</h3>
-          </div>
+    <div class="col-12 col-md-4">
+      <div class="card card-dark-grey">
+        <div class="card-header">
+          <span class="pull-left"><i class="fa fa-cog"></i></span>Filter
         </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="form-group">
-              <validate tag="">
-                <input type="text" name="mobile" required
-                       class="form-control" id="mobile"
-                       placeholder="Mobile No"
-                       v-model="signUpMobileForm.mobile" maxlength="10">
-                <field-messages name="mobile" show="$touched">
-                  <div slot="required" class="alert alert-danger form-inline-error text-left">Please enter mobile number</div>
-                  <div slot="maxlength" class="alert alert-danger form-inline-error text-left">Mobile number cannot be more than 10 characters</div>
-                </field-messages>
-              </validate>
+        <div class="card-body">
+          <div class="row" >
+            <div class="col-6" v-for="(key,value) in filters">
+              <div class="form-group">
+                <label for="category">{{value}}</label>
+                <select name="title" class="form-control" id="category" v-model="filters[value]">
+                  <option value="">-- All --</option>
+                  <option v-for="filter in getListOfDropDownItems(value)" v-bind:value="filter">{{filter}}</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="form-group">
-              <validate tag="">
-                <input type="text" name="password" required
-                       class="form-control" id="password"
-                       placeholder="Password"
-                       v-model="signUpMobileForm.password" minlength="6">
-                <field-messages name="password" show="$touched">
-                  <div slot="required" class="alert alert-danger form-inline-error text-left">Please enter password</div>
-                  <div slot="minlength" class="alert alert-danger form-inline-error text-left">Password must be more than 6 characters</div>
-                </field-messages>
-              </validate>
-            </div>
-          </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-8" >
+      <div class="card card-light-grey">
+        <div class="card-header">
+          <span class="pull-left"><i class="fa fa-list"></i></span>{{filteredFeatures.length}} Records
         </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="form-group">
-              <validate tag="">
-                <input type="text" name="reEnterPassword" required
-                       class="form-control" id="reEnterPassword"
-                       placeholder="Confirm Password"
-                       v-model="signUpMobileForm.reEnterPassword">
-                <field-messages name="reEnterPassword" show="$touched">
-                  <div slot="required" class="alert alert-danger form-inline-error text-left">Please re-enter password</div>
-                </field-messages>
-              </validate>
-            </div>
-          </div>
+        <div class="card-body" id="map-container">
+          <MglMap container="map-container"
+                  :accessToken="accessToken"
+                  :mapStyle.sync="mapStyle"
+                  :zoom="zoom"
+                  :center="center">
+            <MglAttributionControl></MglAttributionControl>
+            <MglNavigationControl position="bottom-left"></MglNavigationControl>
+            <MglGeolocateControl position="top-right"></MglGeolocateControl>
+            <MglScaleControl></MglScaleControl>
+            <MglMarker :coordinates="feature.geometry.coordinates" :color="feature.properties.color" v-for="feature in filteredFeatures" :key="feature.properties.id">
+              <MglPopup>
+                <div class="card">
+                  <div class="card-header"><i class="fa fa-info-circle"></i> Information </div>
+                  <div class="card-body">
+                    <strong>ID : {{feature.properties.id}}<br>
+                      Title : {{feature.properties.project.Title}}<br>
+                      Address : {{feature.properties.project.Address}}<br>
+                      <template  v-for="(key,value) in filters">
+                        {{value}} : {{feature.properties.project[value]}}<br>
+                      </template></strong>
+                  </div>
+                </div>
+              </MglPopup>
+            </MglMarker>
+          </MglMap>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <button type="submit" class="btn btn-primary mt-2 full-width" v-bind:disabled="signUpMobileFormState.$invalid">Sign up</button>
-          </div>
-        </div>
-      </vue-form>
+      </div>
     </div>
   </div>
 </section>

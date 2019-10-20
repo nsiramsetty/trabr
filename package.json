@@ -1,7 +1,7 @@
 {
-  "name": "trabr-signup",
+  "name": "archistar-vue-app",
   "version": "1.0.0",
-  "description": "Trabr Sign up Coding Test",
+  "description": "Archistar Vue JS Coding Test",
   "author": "Naresh Siramsetty",
   "private": true,
   "scripts": {
@@ -47,6 +47,7 @@
     "http-proxy-middleware": "0.19.1",
     "inject-loader": "3.0.1",
     "lodash": "4.17.11",
+    "mapbox-gl": "^1.4.1",
     "moment": "latest",
     "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "2.0.0",
@@ -61,6 +62,7 @@
     "vue": "2.5.17",
     "vue-form": "4.10.1",
     "vue-loader": "13.7.3",
+    "vue-mapbox": "^0.4.1",
     "vue-resource": "1.5.1",
     "vue-router": "3.0.1",
     "vue-style-loader": "3.1.2",

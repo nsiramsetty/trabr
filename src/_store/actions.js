@@ -1,5 +1,5 @@
-export const UPDATE_API_RESPONSE = ({commit}, api_response) => {
-  commit('UPDATE_API_RESPONSE', api_response);
+export const UPDATE_MOBILE = ({commit}, mobile) => {
+  commit('UPDATE_MOBILE', mobile);
 };
 
 export const CLEAR_ALL_DATA = ({commit}) => {

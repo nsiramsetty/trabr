@@ -1,9 +1,14 @@
 import {initialState} from './initialState';
 
-export const UPDATE_API_RESPONSE = (state, api_response) => {
-  state.api_response = api_response;
+export const UPDATE_MOBILE = (state, mobile) => {
+  state.mobile = mobile;
+};
+
+export const UPDATE_IS_MOBILE_VERIFIED = (state, isMobileVerified) => {
+  state.isMobileVerified = isMobileVerified;
 };
 
 export const CLEAR_ALL_DATA = (state) => {
-  state.api_response = initialState.api_response;
+  state.mobile = initialState.mobile;
+  state.isMobileVerified = initialState.isMobileVerified;
 };

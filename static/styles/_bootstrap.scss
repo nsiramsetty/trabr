@@ -3,8 +3,6 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 // Bootstrap Vue
 @import '~bootstrap-vue/dist/bootstrap-vue.css';
-// Import Date Range Picker
-@import "~vue2-daterange-picker/dist/lib/vue-daterange-picker.min.css";
 
 // Overrides
 .container {
@@ -14,7 +12,7 @@
 }
 
 .alert {
-  border-radius: 0;
+  //border-radius: 0;
 }
 
 .alert-heading {
@@ -22,7 +20,7 @@
 }
 
 .btn, .form-control, .dropdown-menu {
-  border-radius: 0 !important;
+  //border-radius: 0 !important;
 }
 
 .btn {
@@ -30,7 +28,7 @@
 }
 
 .tooltip-inner {
-  border-radius: 0;
+  //border-radius: 0;
   font-family: $font-korolev-medium;
   font-size: $size-75rem;
   padding: $size-50rem;

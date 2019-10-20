@@ -1,5 +1,6 @@
 let defaultState = {
-  api_response: null,
+  mobile : '',
+  isMobileVerified : false
 };
 
 export const initialState = defaultState;

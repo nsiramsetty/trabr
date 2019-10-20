@@ -1,35 +1,33 @@
-import 'es6-promise/auto';
-import Vue from 'vue';
-import Axios from 'axios';
-import VueForm from 'vue-form';
-import Element from 'element-ui';
-import BootstrapVue from 'bootstrap-vue'
-import {sync} from 'vuex-router-sync';
-import VueCookies from 'vue-cookies';
-import App from './_view/App.vue';
-import router from './_router';
-import store from './_store';
-import VRuntimeTemplate from "v-runtime-template";
+// Core Vue JS
+import Vue from 'vue'
+import router from './_router'
+import store from './_store'
+import {sync} from 'vuex-router-sync'
+// Import AXIO For http If need to make API Calls to Backend or 3rd Party
+import Axios from 'axios'
+// Vue Form Library for Custom Validations and Slot based messages.
+import VueForm from 'vue-form'
+// Toastr for Pop Up Notifications
+import Toastr from 'vue-toastr'
+import {TOASTR_CONFIG} from './_config/ToastrConfig'
+// ES6 Promise for IE Support
+import 'es6-promise/auto'
+// Progress for API Calls
+import {loadProgressBar} from 'axios-progress-bar'
+import {LOADER_CONFIG} from './_config/LoaderConfig'
 
-import {loadProgressBar} from 'axios-progress-bar';
-import {LOADER_CONFIG} from "./_config/LoaderConfig";
-import Toastr from 'vue-toastr';
-import {TOASTR_CONFIG} from "./_config/ToastrConfig";
+sync(store, router)
 
-Vue.use(Element);
-Vue.use(BootstrapVue);
+Vue.prototype.$http = Axios
 Vue.use(VueForm);
-Vue.use(VRuntimeTemplate);
-Vue.use(VueCookies);
 
-Vue.prototype.$http = Axios;
-Vue.config.productionTip = false;
 Vue.use(Toastr, TOASTR_CONFIG);
+
 loadProgressBar(LOADER_CONFIG);
 
-sync(store, router);
+Vue.config.productionTip = false
 
-Vue.component('vue-toastr', Toastr);
+// Mount Vue JS APP into #app <div>
 
 new Vue({
   el: '#app',

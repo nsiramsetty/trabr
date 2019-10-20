@@ -1,1 +1,2 @@
-export const api_response = state => state.api_response;
+export const mobile = state => state.mobile;
+export const isMobileVerified = state => state.isMobileVerified;

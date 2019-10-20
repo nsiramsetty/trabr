@@ -1,12 +1,13 @@
 @import "variables";
-// ABC Check Box
-@import '~awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css';
-// Bootstrap Date Time Picker
-@import '~pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
 // Overrides
 
 .form-control {
   font-size: $size-90rem !important;
+  background: $brand-light-gray
+}
+
+.form-control:focus {
+  background: $brand-light-gray
 }
 
 .form-inline-error {
